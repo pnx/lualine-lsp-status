@@ -74,8 +74,7 @@ end
 
 function M:update_status()
 
-    local num_clients = #vim.tbl_keys(vim.lsp.get_clients())
-
+    local num_clients = #vim.tbl_keys(vim.lsp.get_clients({bufnr = 0}))
     local status = "inactive"
     if num_clients > 0 then
         status = "active"
