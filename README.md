@@ -57,6 +57,9 @@ This is the default configuration, feel free to change it to your liking.
     -- true if icon should also be color coded.
     colored = true,
 
+    -- List of filetypes to disable this component for.
+    disabled_filetypes = {},
+
     -- Colors used.
     colors = {
         -- Color used if there are one or more clients connected

@@ -9,6 +9,9 @@ local default_options = {
     -- true if icon should also be color coded.
     colored = true,
 
+    -- List of filetypes to disable this component for.
+    disabled_filetypes = {},
+
     -- Colors used.
     colors = {
         -- Color used if there are one or more clients connected
@@ -73,6 +76,10 @@ function M:format(icon, count)
 end
 
 function M:update_status()
+
+    if vim.tbl_contains(self.options.disabled_filetypes or {}, vim.bo.filetype) then
+        return ""
+    end
 
     local num_clients = #vim.tbl_keys(vim.lsp.get_clients({bufnr = 0}))
     local status = "inactive"
