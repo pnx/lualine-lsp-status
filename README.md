@@ -50,8 +50,13 @@ This is the default configuration, feel free to change it to your liking.
 
 ```lua
 {
-
-    -- true if the number of lsp clients connected should be shown.
+    -- Control how/when client count should be displayed
+    --
+    -- The following values are accepted:
+    --
+    --  * true : Count is displayed if its greater than zero
+    --  * false : No count is displayed.
+    --  * "always" : Count is displayed regardless of value.
     show_count = true,
 
     -- true if icon should also be color coded.

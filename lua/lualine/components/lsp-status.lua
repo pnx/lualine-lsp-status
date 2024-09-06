@@ -3,7 +3,13 @@ local utils = require('lualine.utils.utils')
 
 local default_options = {
 
-    -- true if the number of lsp clients connected should be shown.
+    -- Control how/when client count should be displayed
+    --
+    -- The following values are accepted:
+    --
+    --  * true : Count is displayed if its greater than zero
+    --  * false : No count is displayed.
+    --  * "always" : Count is displayed regardless of value.
     show_count = true,
 
     -- true if icon should also be color coded.
@@ -96,7 +102,7 @@ function M:update_status()
         table.insert(segments, icon)
     end
 
-    if self.options.show_count then
+    if self.options.show_count and (num_clients > 0 or self.options.show_count == "always") then
         if self.options.colored then
             table.insert(segments, self.hl["count"] .. num_clients)
         else
